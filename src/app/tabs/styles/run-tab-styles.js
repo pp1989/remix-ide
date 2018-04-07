@@ -60,6 +60,10 @@ var css = csjs`
     border: none;
     text-align: center;
   }
+  .instanceContainerTitle {
+    font-size: 20px;
+    font-weight: bold;
+  }
   .pendingTxsContainer  {
     ${styles.rightPanel.runTab.box_Instance}
     display: flex;
