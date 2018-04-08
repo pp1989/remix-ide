@@ -54,23 +54,32 @@ var css = csjs`
     width: 250px;
   }
   .instanceContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2%;
-    border: none;
-    text-align: center;
-  }
-  .instanceContainerTitle {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .pendingTxsContainer  {
     ${styles.rightPanel.runTab.box_Instance}
     display: flex;
     flex-direction: column;
     margin-top: 2%;
     border: none;
     text-align: center;
+    padding: 10px 0px 15px 15px;
+  }
+  .instanceContainerTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5%;
+    font-size: 12px;
+    text-align: left;
+  }
+  .pendingTxsContainer  {
+    ${styles.rightPanel.runTab.box_Instance};
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    border: none;
+    text-align: center;
+  }
+  .recorderContainer {
+    ${styles.rightPanel.runTab.box_Instance};
+    padding: 10px 0px 15px 15px;
   }
   .container {
     ${styles.rightPanel.runTab.box_RunTab}
@@ -107,8 +116,8 @@ var css = csjs`
     ${styles.rightPanel.runTab.input_RunTab}
   }
   .noInstancesText {
-    ${styles.rightPanel.runTab.box_Instance}
     font-style: italic;
+    text-align: left;
   }
   .pendingTxsText {
     ${styles.rightPanel.runTab.borderBox_Instance}

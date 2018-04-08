@@ -10,9 +10,7 @@ var styleGuide = require('./app/ui/styles-guide/theme-chooser')
 var styles = styleGuide.chooser()
 
 module.exports = UniversalDAppUI
-/*
-  trigger debugRequested
-*/
+// trigger debugRequested
 function UniversalDAppUI (udapp, opts = {}) {
   var self = this
   this.udapp = udapp
@@ -49,7 +47,7 @@ UniversalDAppUI.prototype.renderInstanceFromABI = function (contractABI, address
   instance.appendChild(title)
   if (self.udapp.removable_instances) {
     var close = yo`<div class="${css.udappClose}" onclick=${remove}><i class="${css.closeIcon} fa fa-close" aria-hidden="true"></i></div>`
-    instance.append(close)
+    title.append(close)
   }
 
   // FUNCTIONS
@@ -130,13 +128,8 @@ UniversalDAppUI.prototype.getCallButton = function (args) {
 
   contractProperty.appendChild(contractActions)
   contractActions.appendChild(button)
-  if (inputs.length) {
-    contractActions.appendChild(inputField)
-  }
-  if (lookupOnly) {
-    contractProperty.appendChild(outputOverride)
-  }
-
+  if (inputs.length) { contractActions.appendChild(inputField) }
+  if (lookupOnly) { contractProperty.appendChild(outputOverride) }
   if (lookupOnly) {
     contractProperty.classList.add(css.constant)
     button.setAttribute('title', (title + ' - call'))
@@ -166,7 +159,7 @@ var css = csjs`
   .title {
     ${styles.rightPanel.runTab.titlebox_RunTab}
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     font-size: 11px;
     height: 30px;
@@ -189,13 +182,13 @@ var css = csjs`
     color: ${styles.rightPanel.runTab.icon_AltColor_Instance_CopyToClipboard};
   }
   .noInstancesText {
-    ${styles.rightPanel.runTab.box_Instance}
     font-style: italic;
+    text-align: left;
   }
   .instance {
-    ${styles.rightPanel.runTab.box_Instance};
-    margin-bottom: 10px;
-    padding: 10px 15px 15px 15px;
+    min-width: 310px;
+    display: flex;
+    flex-direction: column;
   }
   .instance .title:before {
     content: "\\25BE";
@@ -226,6 +219,7 @@ var css = csjs`
   .closeIcon {
     font-size: 12px;
     cursor: pointer;
+    margin-left: 5px;
   }
   .udappClose {
     display: flex;

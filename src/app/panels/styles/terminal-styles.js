@@ -27,20 +27,20 @@ var css = csjs`
     display           : flex;
     align-items       : center;
     width             : 100%;
-    padding           : 5px;
   }
   .clear           {
-    margin-left       : 10px;
-    margin-right      : 10px; 
+    margin-right      : 20px;
     width             : 10px;
     cursor            : pointer;
     color             : ${styles.terminal.icon_Color_TogglePanel};
+    display           : flex;
   }
   .clear:hover              {
     color             : ${styles.terminal.icon_HoverColor_Menu};
   }
   .toggleTerminal              {
-    margin-right      : 10px;
+    margin-right      : 20px;
+    margin-left       : 20px;
     font-size         : 14px;
     font-weight       : bold;
     cursor            : pointer;
@@ -112,6 +112,7 @@ var css = csjs`
     word-break        : break-all;
     outline           : none;
     font-family       : monospace;
+    margin            : 0px;
   }
   .search {
     display: flex;
@@ -137,9 +138,25 @@ var css = csjs`
     align-items                 : center;
     justify-content             : center;
   }
-  .listen {
-    min-width         : 120px;
+  .listen  {
+  }
+  .verticalLine {
+    border-left       : 1px solid ${styles.colors.veryLightGrey};
+    height            : 65%;
+    margin-right      : 30px;
+  }
+  .pendingTx {
+    background-color  : ${styles.terminal.icon_HoverColor_Menu};
+    border-radius     : 50%;
+    margin-right      : 30px;
+  }
+  .pendingTxNr {
+    width             : 13px;
+    height            : 13px;
+    font-size         : 8px;
+    font-weight       : bold;
     display           : flex;
+    justify-content   : center;
   }
   .dragbarHorizontal  {
     position          : absolute;

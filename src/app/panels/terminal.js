@@ -114,11 +114,19 @@ class Terminal {
         <div class=${css.menu}>
           ${self._view.icon}
           <div class=${css.clear} onclick=${clear}>
-          <i class="fa fa-ban" aria-hidden="true" onmouseenter=${hover} onmouseleave=${hover}></i>
+            <i class="fa fa-ban" aria-hidden="true" title="Clear console" onmouseenter=${hover} onmouseleave=${hover}></i>
+          </div>
+          <div class=${css.pendingTx}><div class=${css.pendingTxNr} title="Number of transactions currently pending">3</div></div>
+          <div class=${css.verticalLine}></div>
+          <div class=${css.listen}>
+            <input onchange=${listenOnNetwork} type="checkbox"
+            title="If checked Remix will listen on all transactions mined in the current environment and not only transactions created from the GUI">
           </div>
           ${self._view.dropdown}
-          <div class=${css.search}><i class="fa fa-search ${css.searchIcon}" aria-hidden="true"></i><input type="text" class=${css.filter} onkeydown=${filter}  placeholder="Search transactions"></div>
-          <div class=${css.listen}><input onchange=${listenOnNetwork} type="checkbox"><label title="If checked Remix will listen on all transactions mined in the current environment and not only transactions created from the GUI">Listen on network</label></div>
+          <div class=${css.search}>
+            <i class="fa fa-search ${css.searchIcon}" aria-hidden="true"></i>
+            <input type="text" class=${css.filter} onkeydown=${filter}  placeholder="Search transactions">
+          </div>
         </div>
       </div>
     `
