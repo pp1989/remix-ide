@@ -68,6 +68,8 @@ var css = csjs`
     margin-bottom: 5%;
     font-size: 12px;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
   }
   .pendingTxsContainer  {
     ${styles.rightPanel.runTab.box_Instance};
@@ -189,7 +191,9 @@ var css = csjs`
   .networkItem {
     margin-right: 5px;
   }
-  .clearinstance {}
+  .clearinstance {
+    margin-right: 15px;
+  }
   .transactionActions {
     display: flex;
     width: 70px;

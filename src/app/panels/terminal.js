@@ -108,6 +108,7 @@ class Terminal {
     self._view.icon = yo`<i onmouseenter=${hover} onmouseleave=${hover} onmousedown=${minimize} class="${css.toggleTerminal} fa fa-angle-double-down"></i>`
     self._view.dragbar = yo`<div onmousedown=${mousedown} class=${css.dragbarHorizontal}></div>`
     self._view.dropdown = self._components.dropdown.render()
+    self._view.pendingTxCount = yo`<div class=${css.pendingTxNr} title="Number of transactions currently pending">0</div>`
     self._view.bar = yo`
       <div class=${css.bar}>
         ${self._view.dragbar}
@@ -116,7 +117,7 @@ class Terminal {
           <div class=${css.clear} onclick=${clear}>
             <i class="fa fa-ban" aria-hidden="true" title="Clear console" onmouseenter=${hover} onmouseleave=${hover}></i>
           </div>
-          <div class=${css.pendingTx}><div class=${css.pendingTxNr} title="Number of transactions currently pending">3</div></div>
+          <div class=${css.pendingTx}>${self._view.pendingTxCount}</div>
           <div class=${css.verticalLine}></div>
           <div class=${css.listen}>
             <input onchange=${listenOnNetwork} type="checkbox"
@@ -130,6 +131,10 @@ class Terminal {
         </div>
       </div>
     `
+    setInterval(() => {
+      updatePendingTxs(self._api, self._view.pendingTxCount)
+    }, 5000)
+
     function listenOnNetwork (ev) {
       self.event.trigger('listenOnNetWork', [ev.currentTarget.checked])
     }
@@ -571,5 +576,10 @@ function domTerminalFeatures (self, scopedCommands) {
 }
 
 function blockify (el) { return yo`<div class=${css.block}>${el}</div>` }
+// PENDING TX
+function updatePendingTxs (api, el) {
+  var count = Object.keys(api.udapp().pendingTransactions()).length
+  el.innerText = count
+}
 
 module.exports = Terminal
